@@ -1,0 +1,275 @@
+:root {
+    --bg: #ffffff;
+    --text: #000000;
+    --card: #f3f3f3;
+    --border: #dddddd;
+}
+
+[data-theme="dark"] {
+    --bg: #000000;
+    --text: #ffffff;
+    --card: #111111;
+    --border: #333333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    /* smoother, longer theme transition */
+    transition: background 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+/* HEADER */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    border-bottom: 1px solid var(--border);
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 50px; /* slightly bigger */
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+    color: var(--text);
+}
+/* invert logo image in dark mode to keep it visible */
+.logo img {
+    transition: filter 0.3s;
+}
+[data-theme="dark"] .logo img {
+    filter: invert(1);
+}
+.logo img { height: 60px; /* or whatever */ }
+
+.nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 500;
+}
+
+.toggle-btn {
+    padding: 6px 12px;
+    background: var(--text);
+    color: var(--bg);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 24px; /* make pill-shaped */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* logo curvy styling */
+.logo {
+    border-radius: 12px;
+    overflow: hidden;
+}
+.logo img {
+    border-radius: 12px;
+}
+#theme-icon {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+/* when dark theme active, rotate/swap icon */
+[data-theme="dark"] #theme-icon {
+    transform: rotate(180deg) scale(1.2);
+    filter: invert(1);
+}
+
+/* make sure logo image is visible in both modes */
+.logo img {
+    transition: filter 0.3s;
+}
+[data-theme="dark"] .logo img {
+    filter: invert(1);
+}
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.hero img {
+    width: 170px;
+    border-radius: 50%;
+}
+
+.hero h1 {
+    margin-top: 20px;
+}
+
+.social img {
+    width: 28px;
+    margin: 15px 10px;
+    transition: filter 0.3s;
+}
+
+/* icons may be dark; invert them in dark theme to keep visible */
+[data-theme="dark"] .social img {
+    filter: invert(1);
+}
+
+/* ABOUT */
+.about {
+    padding: 80px 10%;
+}
+
+.about-container {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.about-image img {
+    width: 260px;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.about-content p {
+    margin-top: 15px;
+    line-height: 1.6;
+}
+
+/* PROJECTS */
+.projects {
+    padding: 80px 10%;
+    text-align: center;
+}
+
+.project-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.card {
+    width: 300px;
+    background: var(--card);
+    padding: 15px;
+    border-radius: 8px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.card:hover {
+    transform: translateY(-8px);
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+/* RESUME */
+.resume {
+    padding: 80px 10%;
+    text-align: center;
+}
+
+iframe {
+    width: 80%;
+    height: 500px;
+    border: 1px solid var(--border);
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: var(--text);
+    color: var(--bg);
+    text-decoration: none;
+}
+
+/* CONTACT */
+.contact {
+    padding: 60px 10%;
+    text-align: center;
+}
+
+footer {
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+
+    .header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .about-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-image img {
+        width: 220px;
+        height: 220px;
+    }
+
+    iframe {
+        width: 100%;
+        height: 400px;
+    }
+}
+
+/* scroll arrow button */
+.scroll-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 50%;
+    background: var(--text);
+    /* no color needed; icon will provide color */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    transition: background 0.3s;
+}
+
+.scroll-btn img {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s;
+}
+
+.scroll-btn:hover {
+    opacity: 0.8;
+}
